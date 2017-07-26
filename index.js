@@ -243,8 +243,6 @@ function handleNextPrevious(){
   $('.namesList').empty()}
 
 })
-
-
 }
 
 startTraitSearch();

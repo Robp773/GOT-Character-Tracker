@@ -1,4 +1,10 @@
 
+body{
+  font-family: Artifika;
+  margin: 0;
+}
+
+
 form{
  background-color: white;
  padding:0;
@@ -32,20 +38,12 @@ h2{
   color:#C0392B;
 }
 h1{
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
   width: 75%;
+  font-size: 5vw;
   margin: auto;
   text-align: center;
   color:black;
-  font-size: 60px;
   background-color: #C0392B;
-}
-
-.startPage{
-  height:350px;
-  margin:100px;
-  font-size: 0;
-  
 }
 .startButton1{
   background-image: url(http://ll-c.ooyala.com/e1/U3d3duYjE6IP4_anJWRVn9mOBEO5I7FQ/promo322342056)
@@ -53,19 +51,22 @@ h1{
 .startButton2{
   background-image: url(http://highlighthollywood.com/wp-content/uploads/2014/07/GOTSeasonfourfinale.png)
 }
-
+.startPage{
+ margin: 10px;
+ text-align: center;
+ font-size: 0;
+}
 .startButton1, .startButton2{
+  font-family: Artifika;
   background-position: center center;
   background-size: cover;
-  color:white;
-  font-weight: bold;
-  font-size: 25px;
-  height: 100%;
+  color:white; 
+  font-size: 4vw; 
   display: inline-block;
-  width: 49.5%;
+  width: 35vw;
+  height: 35vh; 
   border:1px solid black;
   border-radius: 5%;
-  margin: 1px;
 }
 .startButton1:hover, .startButton2:hover{
   border: 3px solid #C0392B;
@@ -156,7 +157,6 @@ button{
  margin-top: 10px;
  background-color: #C0392B;
  width: 75px;
- font-weight: bold;
  border: 1px solid black;
 }
 button:hover{
