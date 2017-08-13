@@ -23,21 +23,19 @@ function submitPressedNames(){
    getDataforName(enteredCharacterName);
    $('.results').removeClass('hidden');
    $('.results').empty()
-
   });
 }
 function submitPressedTraits(){
   $('#formSubmitTraits').click(function(event){
     event.preventDefault(event);
-    // Make submit button invisible 
+    // Make submit button invisible
   $('#formSubmitTraits').addClass('hidden')
     // Makes results hidden for the list of names to select from
   $('.results').addClass('hidden');
-  $('.listParent').removeClass('hidden') 
+  $('.listParent').removeClass('hidden')
   $('.namesList').empty()
      checkStatusAndCulture();
   });
-  
 }
 // Handles reset button presses for both types of searches
 function resetPressedNames(){
@@ -47,15 +45,13 @@ function resetPressedNames(){
      $('.listParent').addClass('hidden');
      $('.results').empty()
      pageCounter = 1;
-   
-    
   });
 }
 function resetPressedTraits(){
   $('#formResetTraits').click(function(){
     $('#form').trigger('reset');
      $('.results').addClass('hidden');
-     $('.listParent').addClass('hidden');  
+     $('.listParent').addClass('hidden');
      $('#formSubmitTraits').removeClass('hidden');
      $('.results').empty()
       pageCounter = 1;
@@ -66,7 +62,7 @@ function switchToCharName(){
     $('.traitSearchContainer').addClass('hidden');
     $('.characterSearchContainer').removeClass('hidden');
      $('.results').addClass('hidden');
-      $('.listParent').addClass('hidden') 
+      $('.listParent').addClass('hidden')
   });
 }
 function switchToTraits(){
@@ -74,7 +70,7 @@ function switchToTraits(){
     $('.characterSearchContainer').addClass('hidden');
      $('.traitSearchContainer').removeClass('hidden');
  $('.results').addClass('hidden');
-  $('.listParent').addClass('hidden') 
+  $('.listParent').addClass('hidden')
   });
 }
 function getDataforName(enteredCharacterName){
@@ -105,10 +101,10 @@ if (data.length === 0){
       '<h4 class="tvParent">Seasons</h4>'+
       '<h4 class="tvSeriesHeader"></h4>'+
       '<h4 class="playedByHeader">Actors</h4>');
-      
+
   $('.nameHeader').append('<div class="inlineDiv">'+ data[0].name + '</div>');
   $('.cultureHeader').append('<div class="inlineDiv">'+ data[0].culture + '</div>');
-  
+
   data.forEach(function(item){
 
     item.titles.forEach(function(title){
@@ -124,7 +120,7 @@ if (data.length === 0){
     item.tvSeries.forEach(function(season){
       var numberSeason = season.replace(/\D/g, '');
       seasonArray.push(numberSeason);
-      
+
       if (Math.max.apply(null, seasonArray) === 0){
          $('.tvSeriesHeader').text('')
       }
@@ -138,9 +134,9 @@ if (data.length === 0){
      if (actor !== ''){
        $('.playedByHeader').append('<div class="inlineDiv">' + actor + '</div>')
      }
-    
+
     });
-   
+
     $('.bornHeader').append('<div class="inlineDiv">'+ item.born + '</div>');
     $('.diedHeader').append('<div class="inlineDiv">'+ item.died + '</div>');
     // The father, mother, and spouse names inside each characters data object do not refer to their string names and instead list where they can be found through their api urls.]
@@ -172,21 +168,21 @@ function displaySpouseName(data){
 // Triggered from submitPressedTraits()
 function checkStatusAndCulture(){
   var cultureSelection;
-  if($('#cultureSelection').val() !== 'Select'){
-   cultureSelection = $('#cultureSelection').val()
+  if($('.cultureSelection').val() !== 'Select'){
+   cultureSelection = $('.cultureSelection').val()
   }
-    var searchAlive = $('#characterStatusAlive').is(':checked');
-    var searchDead = $('#characterStatusDead').is(':checked');
-    var searchUnknown= $('#characterStatusUnknown').is(':checked');
+    var searchAlive = $('.characterStatusAlive').is(':checked');
+    var searchDead = $('.characterStatusDead').is(':checked');
+    var searchUnknown= $('.characterStatusUnknown').is(':checked');
     var statusResult = getSearchedStatus(searchAlive, searchDead);
-   
+
     getDataForTraits(cultureSelection, statusResult);
 }
 function getSearchedStatus(searchAlive, searchDead){
   var searchAliveOrDead;
-  
+
    if (searchAlive === true){
-      searchAliveOrDead = true; 
+      searchAliveOrDead = true;
     }
     else if(searchDead === true){
       searchAliveOrDead = false;
@@ -208,7 +204,7 @@ for(i=0; i<data.length; i++){
 var results = filterArray(testArray);
 
 results.forEach(function(item){
-$('.namesList').append('<button class="listedName">' + item + '</button>'); 
+$('.namesList').append('<button class="listedName">' + item + '</button>');
 });
 
 $('.listedName').click(function(){
@@ -237,20 +233,21 @@ function handleNextPrevious(){
   $('.namesList').empty()
 })
   $('.previous').click(function(){
-    if (pageCounter !== 1){  
+    if (pageCounter !== 1){
   pageCounter--;
   checkStatusAndCulture();
   $('.namesList').empty()}
 
 })
 }
-
-startTraitSearch();
-startCharacterSearch();
-switchToTraits();
-switchToCharName();
-submitPressedNames();
-submitPressedTraits();
-resetPressedNames();
-resetPressedTraits();
-handleNextPrevious();
+$(document).ready(function() {
+  startTraitSearch();
+  startCharacterSearch();
+  switchToTraits();
+  switchToCharName();
+  submitPressedNames();
+  submitPressedTraits();
+  resetPressedNames();
+  resetPressedTraits();
+  handleNextPrevious();
+});
