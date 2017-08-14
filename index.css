@@ -1,36 +1,13 @@
-@media (max-width: 900px){
-  .startButton1, .startButton2, {
-    display: block;
-    height: 50%;
-    margin: auto;
-    }
-.traitForm, .characterForm{
-  width: 100%;
-  margin: 10px;
-}
-  }
-
-.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
 
 body{
+  text-align: center;
   font-family: Artifika;
   margin: 0;
 }
 form{
  background-color: white;
  padding:0;
- width: 35%;
+ width: 100%;
  margin-left: auto;
  margin-right: auto;
  margin-top: 10px;
@@ -63,28 +40,27 @@ h2{
   color:#C0392B;
 }
 h1{
-  width: 75%;
-  font-size: 5vw;
-  margin: auto;
   text-align: center;
-  color:black;
-  background-color: #C0392B;
+  color: black;
+  background-color: rgba(192, 57, 43, .9);
+}
+.startDescription{
+  display: inline-block;
+  margin:10px;
+  background-color: rgba(192, 57, 43, .9);
 }
 .startButton1{
-  background-image: url(http://ll-c.ooyala.com/e1/U3d3duYjE6IP4_anJWRVn9mOBEO5I7FQ/promo322342056)
+  background-image: url(https://c1.staticflickr.com/8/7644/16632632814_e3c1d0631f_b.jpg)
 }
 .startButton2{
-  background-image: url(http://highlighthollywood.com/wp-content/uploads/2014/07/GOTSeasonfourfinale.png)
+  background-image: url(http://i.vimeocdn.com/video/521342769_1280x720.jpg)
 }
 .startPage{
  margin-top: 10px;
  text-align: center;
- font-size: 0;
 }
 .startButton1, .startButton2{
   font-family: Artifika;
-  margin: auto;
-  width: 35%;
   height: 250px;
   background-position: center center;
   background-size: cover;
@@ -143,9 +119,8 @@ h4{
   text-align: center;
 }
 .listedName{
-  height:14.28%;
   margin:0;
-  width: 14.28%;
+  width: 50%;
 }
 .listedName:focus{
   background-color: #F4D03F;
@@ -170,7 +145,6 @@ h4{
  border: 1px solid black;
 }
 button{
- margin-top: 10px;
  background-color: #C0392B;
  width: 75px;
  border: 1px solid black;

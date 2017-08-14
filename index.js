@@ -149,7 +149,7 @@ if (data.length === 0){
   });
 }
 function getFamilyNames(familyUrl){
-   $.getJSON(familyUrl, displayMomDadNames);
+   $.getJSON(item.father, displayMomDadNames);
 }
 function displayMomDadNames(data){
   if(data.gender === 'Male'){
@@ -204,7 +204,7 @@ for(i=0; i<data.length; i++){
 var results = filterArray(testArray);
 
 results.forEach(function(item){
-$('.namesList').append('<button class="listedName">' + item + '</button>');
+$('.namesList').append('<button class="listedName" role="listitem">' + item + '</button>');
 });
 
 $('.listedName').click(function(){
@@ -225,7 +225,6 @@ function filterArray(testArray){
   }
   return resultArray;
 }
-
 function handleNextPrevious(){
   $('.next').click(function(){
   pageCounter++;
