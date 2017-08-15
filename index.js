@@ -1,5 +1,6 @@
 var listAllCharacters = 'https://www.anapioficeandfire.com/api/characters';
 var pageCounter = 1;
+var glitchTracker = false;
 // Handles user choice of starting a character search
 function startCharacterSearch(){
   $('.startButton1').click(function(){
@@ -80,7 +81,7 @@ function getDataforName(enteredCharacterName){
   }
 }
 function displayDataForName(data){
-
+console.log(data);
 if (data.length === 0){
   $('.results').addClass('hidden')
   alert('No results found. Make sure to use both the first and last name.')
@@ -88,7 +89,7 @@ if (data.length === 0){
   var seasonArray = [];
 
   $('.results').append(
-      '<h3 class="resultsDataHeader">Character Results</h3>' +
+      '<h3 class="resultsDataHeader">Available Results</h3>' +
       '<h4 class="nameHeader">Name</h4>'+
       '<h4 class="titlesHeader">Titles</h4>'+
       '<h4 class="aliasesHeader">Aliases</h4>'+
@@ -103,7 +104,13 @@ if (data.length === 0){
       '<h4 class="playedByHeader">Actors</h4>');
 
   $('.nameHeader').append('<div class="inlineDiv">'+ data[0].name + '</div>');
-  $('.cultureHeader').append('<div class="inlineDiv">'+ data[0].culture + '</div>');
+if(data[0].culture !== ''){
+  $('.cultureHeader').append('<div class="inlineDiv">'+ data[0].culture + '</div>')
+}
+  else {
+    $('.cultureHeader').addClass('hidden')
+  }
+
 
   data.forEach(function(item){
 
@@ -111,45 +118,76 @@ if (data.length === 0){
        if(title !== ''){
          $('.titlesHeader').append('<div class="inlineDiv">' + title + '</div>' );
       }
+      else {
+        $('.titlesHeader').addClass('hidden');
+      }
     });
     item.aliases.forEach(function(aliases){
       if(aliases !== ''){
         $('.aliasesHeader').append('<div class="inlineDiv">' + aliases + '</div>');
+      }
+      else {
+        $('.aliasesHeader').addClass('hidden')
       }
     });
     item.tvSeries.forEach(function(season){
       var numberSeason = season.replace(/\D/g, '');
       seasonArray.push(numberSeason);
 
-      if (Math.max.apply(null, seasonArray) === 0){
-         $('.tvSeriesHeader').text('')
+      if (Math.max.apply(null, seasonArray) === 0 || item.tvSeries === ''){
+        //  $('.tvSeriesHeader').text('')
+          $('.tvSeriesHeader, .tvParent').addClass('hidden')
+
       }
       else if(Math.min.apply(null, seasonArray) ===  Math.max.apply(null, seasonArray)){
          $('.tvSeriesHeader').text(Math.min.apply(null, seasonArray));
       }
       else{
-    $('.tvSeriesHeader').text(Math.min.apply(null, seasonArray) + '-' + Math.max.apply(null, seasonArray));}
+    $('.tvSeriesHeader').text(Math.min.apply(null, seasonArray) + '-' + Math.max.apply(null, seasonArray))}
     });
     item.playedBy.forEach(function(actor){
      if (actor !== ''){
        $('.playedByHeader').append('<div class="inlineDiv">' + actor + '</div>')
      }
-
+     else {
+       $('.playedByHeader').addClass('hidden')
+     }
     });
+if(item.born !== ''){
+    $('.bornHeader').append('<div class="inlineDiv">'+ item.born + '</div>')
+}
+    else {
+      $('.bornHeader').addClass('hidden')
+}
+if(item.died !== ''){
+    $('.diedHeader').append('<div class="inlineDiv">'+ item.died + '</div>')
+  }
+  else{
+    $('.diedHeader').addClass('hidden')
+  }
 
-    $('.bornHeader').append('<div class="inlineDiv">'+ item.born + '</div>');
-    $('.diedHeader').append('<div class="inlineDiv">'+ item.died + '</div>');
+
     // The father, mother, and spouse names inside each characters data object do not refer to their string names and instead list where they can be found through their api urls.]
+
     if(item.father !== ''){
       getFamilyNames(item.father);}
+  else {
+    $('.fatherHeader').addClass('hidden')
+  }
     if(item.mother !== ''){
     getFamilyNames(item.mother);}
+    else {
+      $('.motherHeader').addClass('hidden')
+    }
     if(item.spouse !== ''){
     getSpouseName(item.spouse);}
+    else {
+      $('.spouseHeader').addClass('hidden')
+    }
   });
 }
 function getFamilyNames(familyUrl){
-   $.getJSON(item.father, displayMomDadNames);
+   $.getJSON(familyUrl, displayMomDadNames);
 }
 function displayMomDadNames(data){
   if(data.gender === 'Male'){
@@ -171,12 +209,15 @@ function checkStatusAndCulture(){
   if($('.cultureSelection').val() !== 'Select'){
    cultureSelection = $('.cultureSelection').val()
   }
-    var searchAlive = $('.characterStatusAlive').is(':checked');
-    var searchDead = $('.characterStatusDead').is(':checked');
-    var searchUnknown= $('.characterStatusUnknown').is(':checked');
+
+    var searchAlive = $('#characterStatusAlive').is(':checked');
+    var searchDead = $('#characterStatusDead').is(':checked');
+
+
     var statusResult = getSearchedStatus(searchAlive, searchDead);
 
     getDataForTraits(cultureSelection, statusResult);
+
 }
 function getSearchedStatus(searchAlive, searchDead){
   var searchAliveOrDead;
@@ -195,16 +236,22 @@ function getDataForTraits(cultureSelection, statusResult){
 }
 // Filters out duplicate names returned by the trait query and adds individual buttons for each returned name. These buttons link to specific information about each character.
 function displayDataForTraits(data){
+  // Fixes glitched button at start of array
+  if (data[0].aliases[0] === 'The Daughter of the Dusk'){
+    glitchTracker = true;
+  }
   $('.pageNumber').text('Page: ' + pageCounter)
-console.log(data)
 var testArray = [];
 for(i=0; i<data.length; i++){
+
   testArray.push(data[i].name);
 }
 var results = filterArray(testArray);
 
 results.forEach(function(item){
-$('.namesList').append('<button class="listedName" role="listitem">' + item + '</button>');
+
+$('.namesList').append('<button class="listedName" role="listitem">' + item + '</button>')
+
 });
 
 $('.listedName').click(function(){
@@ -223,10 +270,15 @@ function filterArray(testArray){
       resultArray.push(testArray[i]);
     }
   }
+  if (glitchTracker === true){
+    resultArray.splice(0,1)
+  }
+
   return resultArray;
 }
 function handleNextPrevious(){
   $('.next').click(function(){
+    glitchTracker = false;
   pageCounter++;
   checkStatusAndCulture();
   $('.namesList').empty()
@@ -236,7 +288,7 @@ function handleNextPrevious(){
   pageCounter--;
   checkStatusAndCulture();
   $('.namesList').empty()}
-
+  glitchTracker = false;
 })
 }
 $(document).ready(function() {

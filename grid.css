@@ -35,14 +35,13 @@
   width: 50%;
 }
 form{
-  width: 35%;
+  width: 50%;
 }
 
 }
+
 /* Non-mobile, grid */
 @media only screen and (min-width: 840px) {
-  /* 3 columns, 3/12 in % */
-
   .listedName{
   width: 25%;
   font-size: 2vh;
@@ -50,14 +49,10 @@ form{
   .col-3 {
     width: 25%;
   }
-
   /* 4 columns */
   .col-4 {
     width: 33.33%
   }
-
-  /* 6 columns */
-
 
   .col-12 {
     width: 100%;

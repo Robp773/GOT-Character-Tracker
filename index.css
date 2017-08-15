@@ -1,3 +1,19 @@
+header{
+  margin: 5px;
+}
+
+.switchToCharacterName, .switchToTraitSearch{
+  font-weight: bold;
+  font-size: 1em;
+  margin: 5px;
+}
+
+#formSubmitTraits, #formResetTraits, #formSubmitNames, #formResetNames{
+  width: 25%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
 
 body{
   text-align: center;
@@ -16,6 +32,7 @@ form{
  border: 1px solid black;
 }
 fieldset{
+  padding: 0;
   border: 0;
 }
 form:input{
@@ -122,10 +139,16 @@ h4{
   margin:0;
   width: 50%;
 }
-.listedName:focus{
-  background-color: #F4D03F;
-  /*border: 1px solid yellow;*/
+.listedName:visited{
+  background-color: #E74C3C;
 }
+.listedName:active{
+  border: 1px solid #FFC300;
+}
+.listedName:hover, .previous:hover, .next:hover, .switchToCharacterName:hover, .switchToTraitSearch:hover{
+  background-color: #E74C3C;
+}
+
 .listParent{
    /*margin: 15px;*/
   text-align: center;
@@ -146,15 +169,5 @@ h4{
 }
 button{
  background-color: #C0392B;
- width: 75px;
- border: 1px solid black;
-}*/
-
-button:hover{
-  background-color: #E74C3C;
-}
-.switchToTraitSearch, .switchToCharacterName{
-  width: auto;
-  margin: 10px;
-  padding:10px;
+  border: 1px solid black;
 }
