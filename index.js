@@ -81,7 +81,6 @@ function getDataforName(enteredCharacterName){
   }
 }
 function displayDataForName(data){
-console.log(data);
 if (data.length === 0){
   $('.results').addClass('hidden')
   alert('No results found. Make sure to use both the first and last name.')

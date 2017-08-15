@@ -79,16 +79,19 @@ h1{
 .startButton1, .startButton2{
   font-family: Artifika;
   height: 250px;
+  margin: 1px;
   background-position: center center;
   background-size: cover;
   color:white;
   font-size: 4vw;
   border:1px solid black;
   border-radius: 5%;
+  transition: color .2s, border .2s;
+  transition-timing-function: linear;
 }
 .startButton1:hover, .startButton2:hover{
   border: 3px solid #C0392B;
-  zoom: 1.1
+  color: red;
 }
 html {
   background: url(https://s-media-cache-ak0.pinimg.com/originals/af/dc/d8/afdcd8e60e9babe40290e4ecf92d7365.jpg) no-repeat center center fixed;
@@ -140,10 +143,7 @@ h4{
   width: 50%;
 }
 .listedName:visited{
-  background-color: #E74C3C;
-}
-.listedName:active{
-  border: 1px solid #FFC300;
+  background-color: #cc2b19;
 }
 .listedName:hover, .previous:hover, .next:hover, .switchToCharacterName:hover, .switchToTraitSearch:hover{
   background-color: #E74C3C;
