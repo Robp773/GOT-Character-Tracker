@@ -1,5 +1,13 @@
 header{
+  background: rgba(192, 57, 43, .85);
   margin: 5px;
+  display: inline-block;
+}
+
+.startPageBG{
+  margin-top: 10px;
+  padding: 10px;
+  display: inline-block;  
 }
 
 .switchToCharacterName, .switchToTraitSearch{
@@ -42,6 +50,7 @@ form:input{
   text-align: center;
   display: block;
   margin: auto;
+  border: 1px solid grey;
 }
 h3{
   padding:2px;
@@ -59,12 +68,10 @@ h2{
 h1{
   text-align: center;
   color: black;
-  background-color: rgba(192, 57, 43, .9);
 }
 .startDescription{
   display: inline-block;
   margin:10px;
-  background-color: rgba(192, 57, 43, .9);
 }
 .startButton1{
   background-image: url(https://c1.staticflickr.com/8/7644/16632632814_e3c1d0631f_b.jpg)
@@ -72,7 +79,7 @@ h1{
 .startButton2{
   background-image: url(http://i.vimeocdn.com/video/521342769_1280x720.jpg)
 }
-.startPage{
+.startPage{  
  margin-top: 10px;
  text-align: center;
 }
@@ -90,8 +97,9 @@ h1{
   transition-timing-function: linear;
 }
 .startButton1:hover, .startButton2:hover{
-  border: 3px solid #C0392B;
-  color: red;
+  border: 5px solid #C0392B;
+  /* zoom: 1.5; */
+  /* color: #C0392B; */
 }
 html {
   background: url(https://s-media-cache-ak0.pinimg.com/originals/af/dc/d8/afdcd8e60e9babe40290e4ecf92d7365.jpg) no-repeat center center fixed;

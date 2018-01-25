@@ -1,3 +1,5 @@
+'use strict';
+
 var listAllCharacters = 'https://www.anapioficeandfire.com/api/characters';
 var pageCounter = 1;
 var glitchTracker = false;
@@ -18,77 +20,77 @@ function startTraitSearch(){
 // Handles submit button for both types of searches
 function submitPressedNames(){
   $('#formSubmitNames').click(function(event){
-   event.preventDefault();
-  // name to be searched for in a character search
-   var enteredCharacterName = $('#characterSearch').val();
-   getDataforName(enteredCharacterName);
-   $('.results').removeClass('hidden');
-   $('.results').empty()
+    event.preventDefault();
+    // name to be searched for in a character search
+    var enteredCharacterName = $('#characterSearch').val();
+    getDataforName(enteredCharacterName);
+    $('.results').removeClass('hidden');
+    $('.results').empty();
   });
 }
 function submitPressedTraits(){
   $('#formSubmitTraits').click(function(event){
     event.preventDefault(event);
     // Make submit button invisible
-  $('#formSubmitTraits').addClass('hidden')
+    $('#formSubmitTraits').addClass('hidden');
     // Makes results hidden for the list of names to select from
-  $('.results').addClass('hidden');
-  $('.listParent').removeClass('hidden')
-  $('.namesList').empty()
-     checkStatusAndCulture();
+    $('.results').addClass('hidden');
+    $('.listParent').removeClass('hidden');
+    $('.namesList').empty();
+    checkStatusAndCulture();
   });
 }
 // Handles reset button presses for both types of searches
 function resetPressedNames(){
   $('#formResetNames').click(function(){
     $('#form').trigger('reset');
-     $('.results').addClass('hidden');
-     $('.listParent').addClass('hidden');
-     $('.results').empty()
-     pageCounter = 1;
+    $('.results').addClass('hidden');
+    $('.listParent').addClass('hidden');
+    $('.results').empty();
+    pageCounter = 1;
   });
 }
 function resetPressedTraits(){
   $('#formResetTraits').click(function(){
     $('#form').trigger('reset');
-     $('.results').addClass('hidden');
-     $('.listParent').addClass('hidden');
-     $('#formSubmitTraits').removeClass('hidden');
-     $('.results').empty()
-      pageCounter = 1;
+    $('.results').addClass('hidden');
+    $('.listParent').addClass('hidden');
+    $('#formSubmitTraits').removeClass('hidden');
+    $('.results').empty();
+    pageCounter = 1;
   });
 }
 function switchToCharName(){
   $('.switchToCharacterName').click(function(){
     $('.traitSearchContainer').addClass('hidden');
     $('.characterSearchContainer').removeClass('hidden');
-     $('.results').addClass('hidden');
-      $('.listParent').addClass('hidden')
+    $('.results').addClass('hidden');
+    $('.listParent').addClass('hidden');
   });
 }
 function switchToTraits(){
   $('.switchToTraitSearch').click(function(){
     $('.characterSearchContainer').addClass('hidden');
-     $('.traitSearchContainer').removeClass('hidden');
- $('.results').addClass('hidden');
-  $('.listParent').addClass('hidden')
+    $('.traitSearchContainer').removeClass('hidden');
+    $('.results').addClass('hidden');
+    $('.listParent').addClass('hidden');
   });
 }
 function getDataforName(enteredCharacterName){
   paramObject = {page: 1, pageSize: 50, name: enteredCharacterName};
   if(enteredCharacterName !== ''){
-  $.getJSON(listAllCharacters, paramObject, displayDataForName);
+    $.getJSON(listAllCharacters, paramObject, displayDataForName);
   }
 }
 function displayDataForName(data){
-if (data.length === 0){
-  $('.results').addClass('hidden')
-  alert('No results found. Make sure to use both the first and last name.')
-}
+  if (data.length === 0){
+    $('.results').addClass('hidden');
+    alert('No results found. Make sure to use both the first and last name.');
+  }
   var seasonArray = [];
 
   $('.results').append(
-      '<h3 class="resultsDataHeader">Available Results</h3>' +
+    '<h3 class="resultsDataHeader">Available Results</h3>' +
       '<h4 class="nameHeader">Name</h4>'+
       '<h4 class="titlesHeader">Titles</h4>'+
       '<h4 class="aliasesHeader">Aliases</h4>'+
@@ -103,19 +105,19 @@ if (data.length === 0){
       '<h4 class="playedByHeader">Actors</h4>');
 
   $('.nameHeader').append('<div class="inlineDiv">'+ data[0].name + '</div>');
-if(data[0].culture !== ''){
-  $('.cultureHeader').append('<div class="inlineDiv">'+ data[0].culture + '</div>')
-}
+  if(data[0].culture !== ''){
+    $('.cultureHeader').append('<div class="inlineDiv">'+ data[0].culture + '</div>');
+  }
   else {
-    $('.cultureHeader').addClass('hidden')
+    $('.cultureHeader').addClass('hidden');
   }
 
 
   data.forEach(function(item){
 
     item.titles.forEach(function(title){
-       if(title !== ''){
-         $('.titlesHeader').append('<div class="inlineDiv">' + title + '</div>' );
+      if(title !== ''){
+        $('.titlesHeader').append('<div class="inlineDiv">' + title + '</div>' );
       }
       else {
         $('.titlesHeader').addClass('hidden');
@@ -126,7 +128,7 @@ if(data[0].culture !== ''){
         $('.aliasesHeader').append('<div class="inlineDiv">' + aliases + '</div>');
       }
       else {
-        $('.aliasesHeader').addClass('hidden')
+        $('.aliasesHeader').addClass('hidden');
       }
     });
     item.tvSeries.forEach(function(season){
@@ -135,69 +137,69 @@ if(data[0].culture !== ''){
 
       if (Math.max.apply(null, seasonArray) === 0 || item.tvSeries === ''){
         //  $('.tvSeriesHeader').text('')
-          $('.tvSeriesHeader, .tvParent').addClass('hidden')
+        $('.tvSeriesHeader, .tvParent').addClass('hidden');
 
       }
       else if(Math.min.apply(null, seasonArray) ===  Math.max.apply(null, seasonArray)){
-         $('.tvSeriesHeader').text(Math.min.apply(null, seasonArray));
+        $('.tvSeriesHeader').text(Math.min.apply(null, seasonArray));
       }
       else{
-    $('.tvSeriesHeader').text(Math.min.apply(null, seasonArray) + '-' + Math.max.apply(null, seasonArray))}
+        $('.tvSeriesHeader').text(Math.min.apply(null, seasonArray) + '-' + Math.max.apply(null, seasonArray));}
     });
     item.playedBy.forEach(function(actor){
-     if (actor !== ''){
-       $('.playedByHeader').append('<div class="inlineDiv">' + actor + '</div>')
-     }
-     else {
-       $('.playedByHeader').addClass('hidden')
-     }
+      if (actor !== ''){
+        $('.playedByHeader').append('<div class="inlineDiv">' + actor + '</div>');
+      }
+      else {
+        $('.playedByHeader').addClass('hidden');
+      }
     });
-if(item.born !== ''){
-    $('.bornHeader').append('<div class="inlineDiv">'+ item.born + '</div>')
-}
+    if(item.born !== ''){
+      $('.bornHeader').append('<div class="inlineDiv">'+ item.born + '</div>');
+    }
     else {
-      $('.bornHeader').addClass('hidden')
-}
-if(item.died !== ''){
-    $('.diedHeader').append('<div class="inlineDiv">'+ item.died + '</div>')
-  }
-  else{
-    $('.diedHeader').addClass('hidden')
-  }
+      $('.bornHeader').addClass('hidden');
+    }
+    if(item.died !== ''){
+      $('.diedHeader').append('<div class="inlineDiv">'+ item.died + '</div>');
+    }
+    else{
+      $('.diedHeader').addClass('hidden');
+    }
 
 
     // The father, mother, and spouse names inside each characters data object do not refer to their string names and instead list where they can be found through their api urls.]
 
     if(item.father !== ''){
       getFamilyNames(item.father);}
-  else {
-    $('.fatherHeader').addClass('hidden')
-  }
-    if(item.mother !== ''){
-    getFamilyNames(item.mother);}
     else {
-      $('.motherHeader').addClass('hidden')
+      $('.fatherHeader').addClass('hidden');
+    }
+    if(item.mother !== ''){
+      getFamilyNames(item.mother);}
+    else {
+      $('.motherHeader').addClass('hidden');
     }
     if(item.spouse !== ''){
-    getSpouseName(item.spouse);}
+      getSpouseName(item.spouse);}
     else {
-      $('.spouseHeader').addClass('hidden')
+      $('.spouseHeader').addClass('hidden');
     }
   });
 }
 function getFamilyNames(familyUrl){
-   $.getJSON(familyUrl, displayMomDadNames);
+  $.getJSON(familyUrl, displayMomDadNames);
 }
 function displayMomDadNames(data){
   if(data.gender === 'Male'){
-  $('.fatherHeader').append('<div class="inlineDiv">'+ data.name + '</div>');
+    $('.fatherHeader').append('<div class="inlineDiv">'+ data.name + '</div>');
   }
   else if(data.gender ==='Female'){
     $('.motherHeader').append('<div class="inlineDiv">'+ data.name + '</div>');
   }
 }
 function getSpouseName(spouseUrl){
-   $.getJSON(spouseUrl, displaySpouseName);
+  $.getJSON(spouseUrl, displaySpouseName);
 }
 function displaySpouseName(data){
   $('.spouseHeader').append('<div class="inlineDiv">'+ data.name + '</div>');
@@ -206,31 +208,31 @@ function displaySpouseName(data){
 function checkStatusAndCulture(){
   var cultureSelection;
   if($('.cultureSelection').val() !== 'Select'){
-   cultureSelection = $('.cultureSelection').val()
+    cultureSelection = $('.cultureSelection').val();
   }
 
-    var searchAlive = $('#characterStatusAlive').is(':checked');
-    var searchDead = $('#characterStatusDead').is(':checked');
+  var searchAlive = $('#characterStatusAlive').is(':checked');
+  var searchDead = $('#characterStatusDead').is(':checked');
 
 
-    var statusResult = getSearchedStatus(searchAlive, searchDead);
+  var statusResult = getSearchedStatus(searchAlive, searchDead);
 
-    getDataForTraits(cultureSelection, statusResult);
+  getDataForTraits(cultureSelection, statusResult);
 
 }
 function getSearchedStatus(searchAlive, searchDead){
   var searchAliveOrDead;
 
-   if (searchAlive === true){
-      searchAliveOrDead = true;
-    }
-    else if(searchDead === true){
-      searchAliveOrDead = false;
-    }
-    return searchAliveOrDead;
+  if (searchAlive === true){
+    searchAliveOrDead = true;
+  }
+  else if(searchDead === true){
+    searchAliveOrDead = false;
+  }
+  return searchAliveOrDead;
 }
 function getDataForTraits(cultureSelection, statusResult){
-  paramObject = {page: pageCounter, pageSize: 50, culture: cultureSelection, isAlive: statusResult}
+  paramObject = {page: pageCounter, pageSize: 50, culture: cultureSelection, isAlive: statusResult};
   $.getJSON(listAllCharacters, paramObject, displayDataForTraits);
 }
 // Filters out duplicate names returned by the trait query and adds individual buttons for each returned name. These buttons link to specific information about each character.
@@ -239,26 +241,26 @@ function displayDataForTraits(data){
   if (data[0].aliases[0] === 'The Daughter of the Dusk'){
     glitchTracker = true;
   }
-  $('.pageNumber').text('Page: ' + pageCounter)
-var testArray = [];
-for(i=0; i<data.length; i++){
+  $('.pageNumber').text('Page: ' + pageCounter);
+  var testArray = [];
+  for(i=0; i<data.length; i++){
 
-  testArray.push(data[i].name);
-}
-var results = filterArray(testArray);
+    testArray.push(data[i].name);
+  }
+  var results = filterArray(testArray);
 
-results.forEach(function(item){
+  results.forEach(function(item){
 
-$('.namesList').append('<button class="listedName" role="listitem">' + item + '</button>')
+    $('.namesList').append('<button class="listedName" role="listitem">' + item + '</button>');
 
-});
+  });
 
-$('.listedName').click(function(){
-  var enteredName = $(this).text();
-  $('.results').empty()
-  $('.results').removeClass('hidden');
-  getDataforName(enteredName);
-})
+  $('.listedName').click(function(){
+    var enteredName = $(this).text();
+    $('.results').empty();
+    $('.results').removeClass('hidden');
+    getDataforName(enteredName);
+  });
 }
 
 // filter function used in displayDataForTraits
@@ -270,7 +272,7 @@ function filterArray(testArray){
     }
   }
   if (glitchTracker === true){
-    resultArray.splice(0,1)
+    resultArray.splice(0,1);
   }
 
   return resultArray;
@@ -278,17 +280,17 @@ function filterArray(testArray){
 function handleNextPrevious(){
   $('.next').click(function(){
     glitchTracker = false;
-  pageCounter++;
-  checkStatusAndCulture();
-  $('.namesList').empty()
-})
+    pageCounter++;
+    checkStatusAndCulture();
+    $('.namesList').empty();
+  });
   $('.previous').click(function(){
     if (pageCounter !== 1){
-  pageCounter--;
-  checkStatusAndCulture();
-  $('.namesList').empty()}
-  glitchTracker = false;
-})
+      pageCounter--;
+      checkStatusAndCulture();
+      $('.namesList').empty();}
+    glitchTracker = false;
+  });
 }
 $(document).ready(function() {
   startTraitSearch();
