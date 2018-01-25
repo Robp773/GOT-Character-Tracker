@@ -1,181 +1,213 @@
-header{
-  background: rgba(192, 57, 43, .85);
-  margin: 5px;
-  display: inline-block;
+header {
+	background: rgba(192, 57, 43, .85);
+	margin: 5px;
 }
-
-.startPageBG{
-  margin-top: 10px;
-  padding: 10px;
-  display: inline-block;  
+.startPageBG {
+	text-align: center;
+	margin-top: 10px;
+	padding: 10px;
 }
-
-.switchToCharacterName, .switchToTraitSearch{
-  font-weight: bold;
-  font-size: 1em;
-  margin: 5px;
+.switchToCharacterName, .switchToTraitSearch {
+	font-weight: bold;
+	font-size: 1em;
+	margin: 5px;
 }
-
-#formSubmitTraits, #formResetTraits, #formSubmitNames, #formResetNames{
-  width: 25%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding: 5px;
+#formSubmitTraits, #formResetTraits, #formSubmitNames, #formResetNames {
+	width: 25%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
 }
-
-body{
-  text-align: center;
-  font-family: Artifika;
-  margin: 0;
+body {
+	font-family: Artifika;
+	margin: 0;
 }
-form{
- background-color: white;
- padding:0;
- width: 100%;
- margin-left: auto;
- margin-right: auto;
- margin-top: 10px;
- margin-bottom: 10px;
- font-weight: bold;
- border: 1px solid black;
+form {
+	background-color: white;
+	padding: 0;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	border: 1px solid black;
 }
-fieldset{
-  padding: 0;
-  border: 0;
+fieldset {
+	padding: 0;
+	border: 0;
 }
-form:input{
-  background-color: #C0392B;
+form:input {
+	background-color: #C0392B;
 }
-.cultureSelection, #characterSearch{
-  text-align: center;
-  display: block;
-  margin: auto;
-  border: 1px solid grey;
+.cultureSelection, #characterSearch {
+	text-align: center;
+	display: block;
+	margin: auto;
+	border: 1px solid grey;
 }
-h3{
-  padding:2px;
+h3 {
+	text-align: center;
+	padding: 2px;
 }
-.hidden{
-  display: none;
+.orH4 {
+	font-size: 27px;
+	border: 0;
+}
+.hidden {
+	display: none;
 }
 /*Covers both the character name form and the character trait form.*/
-.characterAndTraits{
-text-align: center;
+
+.characterAndTraits {
+	display: inline-block;
+	text-align: center;
+	width: 50%;
+	background: rgba(0, 0, 0, .5);
+	margin-left: 10px;
 }
-h2{
-  color:#C0392B;
+.characterSearchContainer, .traitSearchContainer {
+	margin: 5px;
 }
-h1{
-  text-align: center;
-  color: black;
+h2 {
+	color: #C0392B;
 }
-.startDescription{
-  display: inline-block;
-  margin:10px;
+h1 {
+	text-align: center;
+	color: black;
 }
-.startButton1{
-  background-image: url(https://c1.staticflickr.com/8/7644/16632632814_e3c1d0631f_b.jpg)
+.startDescription {
+	display: inline-block;
+	margin: 10px;
 }
-.startButton2{
-  background-image: url(http://i.vimeocdn.com/video/521342769_1280x720.jpg)
+.startButton1 {
+	background-image: url(https://c1.staticflickr.com/8/7644/16632632814_e3c1d0631f_b.jpg)
 }
-.startPage{  
- margin-top: 10px;
- text-align: center;
+.startButton2 {
+	background-image: url(http://i.vimeocdn.com/video/521342769_1280x720.jpg)
 }
-.startButton1, .startButton2{
-  font-family: Artifika;
-  height: 250px;
-  margin: 1px;
-  background-position: center center;
-  background-size: cover;
-  color:white;
-  font-size: 4vw;
-  border:1px solid black;
-  border-radius: 5%;
-  transition: color .2s, border .2s;
-  transition-timing-function: linear;
+.startPage {
+	margin-top: 10px;
+	text-align: center;
 }
-.startButton1:hover, .startButton2:hover{
-  border: 5px solid #C0392B;
-  /* zoom: 1.5; */
-  /* color: #C0392B; */
+.startButton1, .startButton2 {
+	font-family: Artifika;
+	height: 250px;
+	margin: 1px;
+	background-position: center center;
+	background-size: cover;
+	color: white;
+	font-size: 4vw;
+	border: 1px solid black;
+	border-radius: 5%;
+	transition: color .2s, border .2s;
+	transition-timing-function: linear;
+}
+.startButton1:hover, .startButton2:hover {
+	border: 5px solid #C0392B;
+	/* zoom: 1.5; */
+	/* color: #C0392B; */
 }
 html {
-  background: url(https://s-media-cache-ak0.pinimg.com/originals/af/dc/d8/afdcd8e60e9babe40290e4ecf92d7365.jpg) no-repeat center center fixed;
-  background-size: cover;
+	background: url(https://s-media-cache-ak0.pinimg.com/originals/af/dc/d8/afdcd8e60e9babe40290e4ecf92d7365.jpg) no-repeat center center fixed;
+	background-size: cover;
 }
-.parent{
-  margin: 5px;
-  text-align: center;
+.parent {
+	margin: 5px;
+	text-align: center;
 }
-.results{
-  text-align: left;
-  margin:auto;
-  width:250px ;
-  background:black;
-  border: 1px solid #C0392B;
+.results {
+	text-align: left;
+	margin: auto;
+	width: 250px;
+	background: black;
+	border: 1px solid #C0392B;
 }
-.resultsDataHeader{
-  padding:0;
-  font-size: 25px;
-  margin: 10px;
-  color: #C0392B;
-  text-align: center;
+.resultsDataHeader {
+	padding: 0;
+	font-size: 25px;
+	margin: 10px;
+	color: #C0392B;
+	text-align: center;
 }
-.image{
-  width: 250px;
-  height: 250px;
+.image {
+	width: 250px;
+	height: 250px;
 }
-.playedByHeader{
-  border:0;
+.playedByHeader {
+	border: 0;
 }
-h4{
-  text-align: center;
-  font-size:20px;
-  color:#C0392B;
-  margin:0;
-  border-top: 1px solid #C0392B;
+h4 {
+	text-align: center;
+	font-size: 20px;
+	color: #C0392B;
+	margin: 0;
+	border-top: 1px solid #C0392B;
 }
-.tvSeriesHeader{
-  border-top: 0;
-  border-bottom: 1px solid #C0392B;
+.tvSeriesHeader {
+	border-top: 0;
+	border-bottom: 1px solid #C0392B;
 }
-.inlineDiv, .tvSeriesHeader{
-  color:white;
-  font-size: 15px;
-  text-align: center;
+.inlineDiv, .tvSeriesHeader {
+	color: white;
+	font-size: 15px;
+	text-align: center;
 }
-.listedName{
-  margin:0;
-  width: 50%;
+.listedName {
+	margin: 0;
+	width: 50%;
 }
-.listedName:visited{
-  background-color: #cc2b19;
+.listedName:visited {
+	background-color: #cc2b19;
 }
-.listedName:hover, .previous:hover, .next:hover, .switchToCharacterName:hover, .switchToTraitSearch:hover{
-  background-color: #E74C3C;
+.listedName:hover, .previous:hover, .next:hover, .switchToCharacterName:hover, .switchToTraitSearch:hover {
+	background-color: #E74C3C;
 }
+.listParent {
+	/*margin: 15px;*/
+	text-align: center;
+}
+.namesList {
+	margin: 15px;
+	font-size: 0;
+	padding: 0;
+	margin: 0;
+}
+.previous, .next, .pageNumber {
+	display: inline-block;
+	margin-top: 10px;
+	background-color: #C0392B;
+	width: 75px;
+	font-weight: bold;
+	border: 1px solid black;
+}
+button {
+	background-color: #C0392B;
+	border: 1px solid black;
+}
+@media only screen and (min-width: 440px) {
+	.startButton1, .startButton2 {
+		width: 49%;
+	}
+	form {
+		width: 75%;
+	}
+}
+/* Non-mobile, grid */
 
-.listParent{
-   /*margin: 15px;*/
-  text-align: center;
-}
-.namesList{
- margin: 15px;
- font-size: 0;
- padding:0;
- margin:0;
- }
-.previous, .next, .pageNumber{
- display: inline-block;
- margin-top: 10px;
- background-color: #C0392B;
- width: 75px;
- font-weight: bold;
- border: 1px solid black;
-}
-button{
- background-color: #C0392B;
-  border: 1px solid black;
+@media only screen and (min-width: 840px) {
+	.listedName {
+		width: 25%;
+		font-size: 2vh;
+	}
+	.col-3 {
+		width: 25%;
+	}
+	/* 4 columns */
+	.col-4 {
+		width: 33.33%
+	}
+	.col-12 {
+		width: 100%;
+	}
 }
