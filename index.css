@@ -212,6 +212,9 @@ button {
     margin-right: 20px;
     background: initial;
   }
+  .nonMobile{
+    visibility: visible
+  }
   body{
 
     background: initial;
