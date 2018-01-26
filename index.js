@@ -17,11 +17,9 @@ function submitPressedNames(){
       alert('Please Enter a Name');
     }
 
-    resetPressedNames();   
+    resetPressedNames();  
+    $('.results').removeClass('hidden'); 
     getDataforName(enteredCharacterName);
-
-
-
   });
 }
 function submitPressedTraits(){
