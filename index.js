@@ -9,38 +9,47 @@ var glitchTracker = false;
 
 // Handles submit button for both types of searches
 function submitPressedNames(){
-  $('#formSubmitNames').click(function(event){
+  $('.formSubmitNames').click(function(event){
     event.preventDefault();
     // name to be searched for in a character search
     var enteredCharacterName = $('#characterSearch').val();
+    if(enteredCharacterName === ''){
+      alert('Please Enter a Name');
+    }
+
+    resetPressedNames();   
     getDataforName(enteredCharacterName);
-    $('.results').empty();
+
+
+
   });
 }
 function submitPressedTraits(){
-  $('#formSubmitTraits').click(function(event){
+  $('.formSubmitTraits').click(function(event){
     event.preventDefault(event);
     // Make submit button invisible
     // Makes results hidden for the list of names to select from
   
     $('.namesList').empty();
     checkStatusAndCulture();
+    resetPressedTraits();
+    $('.listParent').removeClass('hidden');    
+    
   });
 }
 // Handles reset button presses for both types of searches
-function resetPressedNames(){
+function resetPressedNames(){    
+
   $('#formResetNames').click(function(){
     $('#form').trigger('reset');
-
     $('.results').empty();
     pageCounter = 1;
   });
 }
 function resetPressedTraits(){
-  $('#formResetTraits').click(function(){
+  $('.formResetTraits').click(function(){
     $('#form').trigger('reset');
 
-    $('.results').empty();
     pageCounter = 1;
   });
 }
@@ -58,9 +67,8 @@ function displayDataForName(data){
   }
   var seasonArray = [];
 
-  $('.results').append(
-    '<h3 class="resultsDataHeader">Available Results</h3>' +
-      '<h4 class="nameHeader">Name</h4>'+
+  $('.results').html(
+    '<h4 class="nameHeader">Name</h4>'+
       '<h4 class="titlesHeader">Titles</h4>'+
       '<h4 class="aliasesHeader">Aliases</h4>'+
       '<h4 class="bornHeader">Born</h4>'+
@@ -80,8 +88,6 @@ function displayDataForName(data){
   else {
     $('.cultureHeader').addClass('hidden');
   }
-
-
   data.forEach(function(item){
 
     item.titles.forEach(function(title){
@@ -261,8 +267,8 @@ function handleNextPrevious(){
     glitchTracker = false;
   });
 }
-$(document).ready(function() {
 
+$(document).ready(function() {
   submitPressedNames();
   submitPressedTraits();
   resetPressedNames();

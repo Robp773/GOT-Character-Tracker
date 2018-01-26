@@ -2,34 +2,40 @@ header {
 	background: rgba(192, 57, 43, .85);
 	margin: 5px;
 }
+.formAndResult{
+  text-align: center;
+}
+body{	
+  font-family: Artifika;
+	margin: 0;
+  height: -webkit-fill-available;
+  background: rgba(0,0,0, .75)
+}
 .startPageBG {
 	text-align: center;
-	margin-top: 10px;
 	padding: 10px;
 }
-.switchToCharacterName, .switchToTraitSearch {
-	font-weight: bold;
-	font-size: 1em;
-	margin: 5px;
-}
+
 #formSubmitTraits, #formResetTraits, #formSubmitNames, #formResetNames {
 	width: 25%;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding: 5px;
 }
-body {
-	font-family: Artifika;
-	margin: 0;
+.waitingLoad{
+  position: relative;
+  top: 130px;
+  color: #C0392B;
+  font-size: 22px;
 }
+
 form {
-	background-color: white;
-	padding: 0;
+  background-color: rgba(255, 255, 255, .9);	
+  padding: 0;
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10px;
-	margin-bottom: 10px;
 	font-weight: bold;
 	border: 1px solid black;
 }
@@ -40,45 +46,46 @@ fieldset {
 form:input {
 	background-color: #C0392B;
 }
+#characterSearch{
+  margin-bottom: 5px;
+}
 .cultureSelection, #characterSearch {
 	text-align: center;
 	display: block;
-	margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 	border: 1px solid grey;
 }
 h3 {
 	text-align: center;
-	padding: 2px;
+  padding: 2px;
+  margin: 0;
 }
 .orH4 {
 	font-size: 27px;
 	border: 0;
 }
+
 .hidden {
 	display: none;
 }
 /*Covers both the character name form and the character trait form.*/
 
 .characterAndTraits {
-	display: inline-block;
-	text-align: center;
-	width: 50%;
-	background: rgba(0, 0, 0, .5);
-	margin-left: 10px;
+  text-align: center;	
+  
 }
 .characterSearchContainer, .traitSearchContainer {
-	margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 h2 {
 	color: #C0392B;
 }
-h1 {
+header > h1 {
 	text-align: center;
-	color: black;
-}
-.startDescription {
-	display: inline-block;
-	margin: 10px;
+  color: black;
+  margin: 0;
 }
 .startButton1 {
 	background-image: url(https://c1.staticflickr.com/8/7644/16632632814_e3c1d0631f_b.jpg)
@@ -112,23 +119,34 @@ html {
 	background: url(https://s-media-cache-ak0.pinimg.com/originals/af/dc/d8/afdcd8e60e9babe40290e4ecf92d7365.jpg) no-repeat center center fixed;
 	background-size: cover;
 }
+.submitReset{
+  margin-bottom: 5px;
+  background: gray;
+}
 .parent {
 	margin: 5px;
 	text-align: center;
 }
 .results {
-	text-align: left;
-	margin: auto;
-	width: 250px;
-	background: black;
-	border: 1px solid #C0392B;
+  background: rgba(0,0,0,.25);
+  overflow: auto;
+  max-height: 259px;
+
+  
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #C0392B; 
 }
 .resultsDataHeader {
-	padding: 0;
-	font-size: 25px;
-	margin: 10px;
+
 	color: #C0392B;
-	text-align: center;
+  text-align: center;
+  vertical-align: middle;
 }
 .image {
 	width: 250px;
@@ -154,7 +172,8 @@ h4 {
 	text-align: center;
 }
 .listedName {
-	margin: 0;
+  margin: 0;
+  font-size: initial;
 	width: 50%;
 }
 .listedName:visited {
@@ -164,20 +183,22 @@ h4 {
 	background-color: #E74C3C;
 }
 .listParent {
-	/*margin: 15px;*/
+  /*margin: 15px;*/
+  background: rgba(0,0,0,.5);
 	text-align: center;
 }
 .namesList {
 	margin: 15px;
 	font-size: 0;
 	padding: 0;
-	margin: 0;
+  margin: 0;
+  margin-top: 5px;
 }
 .previous, .next, .pageNumber {
 	display: inline-block;
 	margin-top: 10px;
 	background-color: #C0392B;
-	width: 75px;
+	width: 100px;
 	font-weight: bold;
 	border: 1px solid black;
 }
@@ -186,28 +207,46 @@ button {
 	border: 1px solid black;
 }
 @media only screen and (min-width: 440px) {
+  .listParent{
+    margin-left: 20px;
+    margin-right: 20px;
+    background: initial;
+  }
+  body{
+
+    background: initial;
+  }
 	.startButton1, .startButton2 {
 		width: 49%;
 	}
 	form {
 		width: 75%;
-	}
+  }
+  .characterAndTraits{
+    display: inline-block;
+    width: 48%;
+    height: 325px;
+    vertical-align: top;
+    background: rgba(0,0,0,.75);
+    border: 3px solid #C0392B;
+    
+    
+  }
+  .results{
+    background: rgba(0,0,0,.75);
+    border: 3px solid #C0392B;
+    max-height: initial;
+    overflow: auto;
+    height: 325px;
+    width:  45%;
+    display: inline-block;
+  }
+
 }
-/* Non-mobile, grid */
 
 @media only screen and (min-width: 840px) {
 	.listedName {
 		width: 25%;
-		font-size: 2vh;
-	}
-	.col-3 {
-		width: 25%;
-	}
-	/* 4 columns */
-	.col-4 {
-		width: 33.33%
-	}
-	.col-12 {
-		width: 100%;
+		font-size: 17px;
 	}
 }
