@@ -4,80 +4,58 @@ var listAllCharacters = 'https://www.anapioficeandfire.com/api/characters';
 var pageCounter = 1;
 var glitchTracker = false;
 // Handles user choice of starting a character search
-function startCharacterSearch(){
-  $('.startButton1').click(function(){
-    $('.characterSearchContainer').removeClass('hidden');
-    $('.startPage').addClass('hidden');
-  });
-}
+
 // Handles users choice of starting a character trait search
-function startTraitSearch(){
-  $('.startButton2').click(function(){
-    $('.traitSearchContainer').removeClass('hidden');
-    $('.startPage').addClass('hidden');
-  });
-}
+
 // Handles submit button for both types of searches
 function submitPressedNames(){
-  $('#formSubmitNames').click(function(event){
+  $('.formSubmitNames').click(function(event){
     event.preventDefault();
     // name to be searched for in a character search
     var enteredCharacterName = $('#characterSearch').val();
+    if(enteredCharacterName === ''){
+      alert('Please Enter a Name');
+    }
+
+    resetPressedNames();   
     getDataforName(enteredCharacterName);
-    $('.results').removeClass('hidden');
-    $('.results').empty();
+
+
+
   });
 }
 function submitPressedTraits(){
-  $('#formSubmitTraits').click(function(event){
+  $('.formSubmitTraits').click(function(event){
     event.preventDefault(event);
     // Make submit button invisible
-    $('#formSubmitTraits').addClass('hidden');
     // Makes results hidden for the list of names to select from
-    $('.results').addClass('hidden');
-    $('.listParent').removeClass('hidden');
+  
     $('.namesList').empty();
     checkStatusAndCulture();
+    resetPressedTraits();
+    $('.listParent').removeClass('hidden');    
+    
   });
 }
 // Handles reset button presses for both types of searches
-function resetPressedNames(){
+function resetPressedNames(){    
+
   $('#formResetNames').click(function(){
     $('#form').trigger('reset');
-    $('.results').addClass('hidden');
-    $('.listParent').addClass('hidden');
     $('.results').empty();
     pageCounter = 1;
   });
 }
 function resetPressedTraits(){
-  $('#formResetTraits').click(function(){
+  $('.formResetTraits').click(function(){
     $('#form').trigger('reset');
-    $('.results').addClass('hidden');
-    $('.listParent').addClass('hidden');
-    $('#formSubmitTraits').removeClass('hidden');
-    $('.results').empty();
+
     pageCounter = 1;
   });
 }
-function switchToCharName(){
-  $('.switchToCharacterName').click(function(){
-    $('.traitSearchContainer').addClass('hidden');
-    $('.characterSearchContainer').removeClass('hidden');
-    $('.results').addClass('hidden');
-    $('.listParent').addClass('hidden');
-  });
-}
-function switchToTraits(){
-  $('.switchToTraitSearch').click(function(){
-    $('.characterSearchContainer').addClass('hidden');
-    $('.traitSearchContainer').removeClass('hidden');
-    $('.results').addClass('hidden');
-    $('.listParent').addClass('hidden');
-  });
-}
+
 function getDataforName(enteredCharacterName){
-  paramObject = {page: 1, pageSize: 50, name: enteredCharacterName};
+  let paramObject = {page: 1, pageSize: 50, name: enteredCharacterName};
   if(enteredCharacterName !== ''){
     $.getJSON(listAllCharacters, paramObject, displayDataForName);
   }
@@ -89,9 +67,8 @@ function displayDataForName(data){
   }
   var seasonArray = [];
 
-  $('.results').append(
-    '<h3 class="resultsDataHeader">Available Results</h3>' +
-      '<h4 class="nameHeader">Name</h4>'+
+  $('.results').html(
+    '<h4 class="nameHeader">Name</h4>'+
       '<h4 class="titlesHeader">Titles</h4>'+
       '<h4 class="aliasesHeader">Aliases</h4>'+
       '<h4 class="bornHeader">Born</h4>'+
@@ -111,8 +88,6 @@ function displayDataForName(data){
   else {
     $('.cultureHeader').addClass('hidden');
   }
-
-
   data.forEach(function(item){
 
     item.titles.forEach(function(title){
@@ -232,7 +207,7 @@ function getSearchedStatus(searchAlive, searchDead){
   return searchAliveOrDead;
 }
 function getDataForTraits(cultureSelection, statusResult){
-  paramObject = {page: pageCounter, pageSize: 50, culture: cultureSelection, isAlive: statusResult};
+  let paramObject = {page: pageCounter, pageSize: 50, culture: cultureSelection, isAlive: statusResult};
   $.getJSON(listAllCharacters, paramObject, displayDataForTraits);
 }
 // Filters out duplicate names returned by the trait query and adds individual buttons for each returned name. These buttons link to specific information about each character.
@@ -243,7 +218,7 @@ function displayDataForTraits(data){
   }
   $('.pageNumber').text('Page: ' + pageCounter);
   var testArray = [];
-  for(i=0; i<data.length; i++){
+  for(let i=0; i<data.length; i++){
 
     testArray.push(data[i].name);
   }
@@ -266,7 +241,7 @@ function displayDataForTraits(data){
 // filter function used in displayDataForTraits
 function filterArray(testArray){
   var resultArray = [];
-  for(i=0; i<testArray.length; i+=1){
+  for(let i=0; i<testArray.length; i+=1){
     if(resultArray.indexOf(testArray[i]) < 0){
       resultArray.push(testArray[i]);
     }
@@ -292,11 +267,8 @@ function handleNextPrevious(){
     glitchTracker = false;
   });
 }
+
 $(document).ready(function() {
-  startTraitSearch();
-  startCharacterSearch();
-  switchToTraits();
-  switchToCharName();
   submitPressedNames();
   submitPressedTraits();
   resetPressedNames();
