@@ -17,11 +17,9 @@ function submitPressedNames(){
       alert('Please Enter a Name');
     }
 
-    resetPressedNames();   
+    resetPressedNames();  
+    $('.results').removeClass('hidden'); 
     getDataforName(enteredCharacterName);
-
-
-
   });
 }
 function submitPressedTraits(){
@@ -212,6 +210,8 @@ function getDataForTraits(cultureSelection, statusResult){
 }
 // Filters out duplicate names returned by the trait query and adds individual buttons for each returned name. These buttons link to specific information about each character.
 function displayDataForTraits(data){
+  $('.buttonsParent').removeClass('hidden');
+  
   // Fixes glitched button at start of array
   if (data[0].aliases[0] === 'The Daughter of the Dusk'){
     glitchTracker = true;
@@ -229,6 +229,7 @@ function displayDataForTraits(data){
     $('.namesList').append('<button class="listedName" role="listitem">' + item + '</button>');
 
   });
+
 
   $('.listedName').click(function(){
     var enteredName = $(this).text();
@@ -267,6 +268,10 @@ function handleNextPrevious(){
     glitchTracker = false;
   });
 }
+
+$('.startBtn').click(function(){
+  $('.modalBG').hide();
+});
 
 $(document).ready(function() {
   submitPressedNames();
