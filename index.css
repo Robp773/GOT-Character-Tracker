@@ -105,6 +105,7 @@ body{
 }
 
 .waitingLoad{
+	margin: 5px;
 	font-weight: bold;
   position: relative;
   top: 130px;
@@ -215,7 +216,7 @@ html {
 .results {
   background: rgba(0,0,0,.25);
   overflow: auto;
-  max-height: 259px;
+ height: 259px;
 
   
 }
@@ -324,11 +325,13 @@ button {
     
     
 	}
-	
+	.searchParent{
+		position: relative;
+	top: 35px;
+	}
   .results{
     background: rgba(0,0,0,.75);
     border: 3px solid #C0392B;
-    max-height: initial;
     overflow: auto;
     height: 325px;
     width:  45%;
