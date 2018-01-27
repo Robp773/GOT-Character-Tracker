@@ -9,7 +9,18 @@
     <link href='https://fonts.googleapis.com/css?family=Artifika' rel='stylesheet'>
   </head>
 
-  
+  <div class="modalBG">
+    <div class="modalText">
+      <h2>Having trouble remembering whose who?</h2>
+      <div class="modalDivsParent">
+      <div class="modalDiv">Search for characters by name or by traits.</div>
+      <div class="modalDiv">Get information on their relationships, alliances, and culture.</div> 
+      <div class="modalDiv">Know more things.</div>
+      <!-- <iframe class="gif" src="https://giphy.com/embed/121YQW1OQhqGLS" /> -->
+    </div>
+      <button class="startBtn"><span class="spanStartBtn">Start Searching</span></button>
+    </div>
+  </div>
   <body>
     <div class="startPageBG">
     <header role='banner'>
@@ -18,6 +29,7 @@
 </div>
 <div class='formAndResult'>
 <div class='characterAndTraits'>
+  <div class="searchParent">
  <div class='characterSearchContainer'>
   <form class='characterForm'>
     <fieldset>
@@ -68,6 +80,7 @@
       <button class='submitReset formResetTraits' type='reset'>Reset</button>
 
     </form>
+  </div>
    </div>
   </div>
     <!--Template for results-->
@@ -77,11 +90,16 @@
        </div>
 
 
-<div class='hidden listParent'> 
-  <div class='namesList' role="list"></div>
-    <button class='previous'>Previous</button>
-    <div class='pageNumber'>Page: 1</div>
-    <button class='next'>Next</button>
+<div class='listParent'> 
+  <div class='namesList' role="list">
+    <div class="resultsDefault">No Search Results</div>  
+  </div>
+<div class="hidden buttonsParent">
+      <button class='previous'>Previous</button>
+      <div class='pageNumber'>Page: 1</div>
+      <button class='next'>Next</button>
+    </div>
+    
 </div>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src='index.js'></script>

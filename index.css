@@ -1,3 +1,84 @@
+
+.startBtn {
+	border-radius: 4px;
+	background-color: #C0392B;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	padding: 20px;
+	width: 200px;
+	transition: all 0.35s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+
+.startBtn .spanStartBtn {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.25s;
+}
+.startBtn .spanStartBtn:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.25s;
+}
+.startBtn:hover .spanStartBtn {
+	padding-right: 25px;
+}
+.startBtn:hover .spanStartBtn:after {
+	opacity: 1;
+	right: 0;
+}
+
+
+.modalBG {
+	width: 100%;
+	height: 1000px;
+	position: fixed;
+	z-index: 1;
+	background: rgba(74, 78, 76, .75);
+}
+.modalText {
+	background-image: url('https://images.freecreatives.com/wp-content/uploads/2016/02/Light-Parchment-Texture.jpg');
+	
+	text-align: center;
+	border-radius: 3%;
+	top: 10%;
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+ padding-right: 20px;
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.gif{
+	width: 25%;
+	border: 0;
+margin: auto;
+}
+.modalDiv{
+	font-size: 25px;
+	margin: 10px;
+}
+
+.modalDivsParent{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+iframe{
+	margin: 0;
+	
+}
+
 header {
 	background: rgba(192, 57, 43, .85);
 	margin: 5px;
@@ -22,11 +103,13 @@ body{
 	margin-bottom: 5px;
 	padding: 5px;
 }
+
 .waitingLoad{
+	font-weight: bold;
   position: relative;
   top: 130px;
   color: #C0392B;
-  font-size: 22px;
+  font-size: 25px;
 }
 
 form {
@@ -120,8 +203,10 @@ html {
 	background-size: cover;
 }
 .submitReset{
-  margin-bottom: 5px;
-  background: gray;
+  border: 0;
+	color: white;
+	background: #C0392B;
+	margin-bottom: 5px;
 }
 .parent {
 	margin: 5px;
@@ -183,16 +268,16 @@ h4 {
 	background-color: #E74C3C;
 }
 .listParent {
-  /*margin: 15px;*/
-  background: rgba(0,0,0,.5);
-	text-align: center;
-}
-.namesList {
-	margin: 15px;
 	font-size: 0;
 	padding: 0;
-  margin: 0;
-  margin-top: 5px;
+	margin-top: 5px;  
+	background: rgba(0,0,0,.75);
+	text-align: center;
+	
+}
+.namesList {	
+	/* border: 0; */
+	
 }
 .previous, .next, .pageNumber {
 	display: inline-block;
@@ -206,11 +291,15 @@ button {
 	background-color: #C0392B;
 	border: 1px solid black;
 }
+.buttonsParent{
+	font-size: 17px;
+}
 @media only screen and (min-width: 440px) {
   .listParent{
-    margin-left: 20px;
-    margin-right: 20px;
-    background: initial;
+		border: 3px solid #C0392B;
+		
+  margin: auto;
+	width: 94.3%;
   }
   .nonMobile{
     visibility: visible
@@ -234,7 +323,8 @@ button {
     border: 3px solid #C0392B;
     
     
-  }
+	}
+	
   .results{
     background: rgba(0,0,0,.75);
     border: 3px solid #C0392B;
@@ -243,7 +333,20 @@ button {
     height: 325px;
     width:  45%;
     display: inline-block;
-  }
+	}
+	.namesList{
+    padding: 10px;
+		margin-top: 0;
+		min-height: 200px;
+	}
+	.resultsDefault{
+		font-size: 25px;
+    border: 0;
+    color: #C0392B;
+    position: relative;
+    top: 75px;
+		font-weight: bold;
+	}
 
 }
 
