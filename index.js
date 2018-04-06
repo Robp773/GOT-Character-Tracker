@@ -270,7 +270,7 @@ function handleNextPrevious(){
 }
 
 $('.startBtn').click(function(){
-  $('.modalBG').hide();
+  $('.modalBG, h1').hide();
 });
 
 $(document).ready(function() {

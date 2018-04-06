@@ -45,7 +45,6 @@
 }
 .modalText {
 	background-image: url('https://images.freecreatives.com/wp-content/uploads/2016/02/Light-Parchment-Texture.jpg');
-	
 	text-align: center;
 	border-radius: 3%;
 	top: 10%;
@@ -114,7 +113,7 @@ body{
 }
 
 form {
-  background-color: rgba(255, 255, 255, .9);	
+  background-color: white;
   padding: 0;
 	width: 100%;
 	margin-left: auto;
@@ -196,8 +195,6 @@ header > h1 {
 }
 .startButton1:hover, .startButton2:hover {
 	border: 5px solid #C0392B;
-	/* zoom: 1.5; */
-	/* color: #C0392B; */
 }
 html {
 	background: url(https://s-media-cache-ak0.pinimg.com/originals/af/dc/d8/afdcd8e60e9babe40290e4ecf92d7365.jpg) no-repeat center center fixed;
@@ -261,12 +258,18 @@ h4 {
   margin: 0;
   font-size: initial;
 	width: 50%;
+	
 }
 .listedName:visited {
 	background-color: #cc2b19;
 }
 .listedName:hover, .previous:hover, .next:hover, .switchToCharacterName:hover, .switchToTraitSearch:hover {
 	background-color: #E74C3C;
+}
+
+.listedName:focus{
+	background: #E74C3C;
+	border: 0px solid black;
 }
 .listParent {
 	font-size: 0;
@@ -277,8 +280,8 @@ h4 {
 	
 }
 .namesList {	
-	/* border: 0; */
-	
+	max-height: 300px;
+	overflow: auto;	
 }
 .previous, .next, .pageNumber {
 	display: inline-block;
@@ -289,7 +292,7 @@ h4 {
 	border: 1px solid black;
 }
 button {
-	background-color: #C0392B;
+	background-color: rgba(192, 57, 43, .85);
 	border: 1px solid black;
 }
 .buttonsParent{
@@ -355,7 +358,7 @@ button {
 
 @media only screen and (min-width: 840px) {
 	.listedName {
-		width: 25%;
+		width: 20%;
 		font-size: 17px;
 	}
 }
