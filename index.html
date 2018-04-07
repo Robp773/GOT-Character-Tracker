@@ -1,106 +1,124 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Game of Thrones Character Tracker</title>
-    <link href='index.css' rel='stylesheet' type='text/css'/>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Artifika' rel='stylesheet'>
-  </head>
-
-  <div class="modalBG">
-    <div class="modalText">
-      <h2>Having trouble remembering who is who?</h2>
-      <div class="modalDivsParent">
-      <div class="modalDiv">Search for characters by name or by traits.</div>
-      <div class="modalDiv">Get information on their relationships, alliances, and culture.</div> 
-      <div class="modalDiv">Know more things.</div>
-    </div>
-      <button class="startBtn"><span class="spanStartBtn">Start Searching</span></button>
-    </div>
-  </div>
-  <body>
-    <div class="startPageBG">
-    <header role='banner'>
-      <h1 class>Game of Thrones Character Tracker</h1>    
-    </header>
-</div>
-<div class='formAndResult'>
-<div class='characterAndTraits'>
-  <div class="searchParent">
- <div class='characterSearchContainer'>
-  <form class='characterForm'>
-    <fieldset>
-        <label for='characterSearch'>Search by Character Name</label>
-        <input id='characterSearch' type='text' placeholder='First and Last Name' role="search">
-    </fieldset>
-    <button class='submitReset formSubmitNames' type='submit'>Submit</button>
-    <button class='submitReset formResetNames' type='reset'>Reset</button>
-  </form>
- </div>
- <h4 class="orH4">OR</h4>
- <div class='traitSearchContainer'>
-    <form class='traitForm'>
-      <fieldset>
-      <legend for='houseSearch'>Search by Character Traits</legend>
-        <select class='cultureSelection'>
-          <option>Select</option>
-          <option>Northmen</option>
-          <option>Valyrian</option>
-          <option>Braavosi</option>
-          <option>Westeros</option>
-          <option>Ironborn</option>
-          <option>Valemen</option>
-          <option>First Men</option>
-          <option>Rhoynar</option>
-          <option>Ghiscari</option>
-          <option>Crannogmen</option>
-          <option>Free Folk</option>
-          <option>Rivermen</option>
-          <option>Dothraki</option>
-          <option>Lhazareen</option>
-          <option>Qartheen</option>
-          <option>Asshai</option>
-          <option>Naathi</option>
-        </select>
-
-      <label for='characterStatusAlive'>Alive</label>
-      <input id='characterStatusAlive' name='radio' type='radio'>
-
-      <label for='characterStatusDead'>Dead</label>
-      <input id='characterStatusDead' name='radio'  type='radio'>
-
-      <label for='characterStatusUnknown'>Either</label>
-      <input id='characterStatusUnknown' name='radio' type='radio'>
-      </fieldset>
-
-      <button class='submitReset formSubmitTraits' type='submit'>Submit</button>
-      <button class='submitReset formResetTraits' type='reset'>Reset</button>
-
-    </form>
-  </div>
-   </div>
-  </div>
-    <!--Template for results-->
-       <div class='hidden results'>
-         <div class="waitingLoad">Waiting for Character Selection</div>
-       </div>
-       </div>
-
-
-<div class='listParent'> 
-  <div class='namesList' role="list">
-    <div class="resultsDefault">No Search Results</div>  
-  </div>
-<div class="hidden buttonsParent">
-      <button class='previous'>Previous</button>
-      <div class='pageNumber'>Page: 1</div>
-      <button class='next'>Next</button>
-    </div>
-    
-</div>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script src='index.js'></script>
-  </body>
+<head>
+	<meta charset='utf-8'>
+	<meta content='width=device-width, initial-scale=1' name='viewport'>
+	<title>Game of Thrones Character Tracker</title>
+	<link href='index.css' rel='stylesheet' type='text/css'>
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Artifika' rel='stylesheet'>
+</head>
+<body>
+	<div class="modalBG">
+		<div class="modalText">
+			<h2>Having trouble remembering who is who?</h2>
+			<div class="modalDivsParent">
+				<div class="modalDiv">
+					Search for characters by name or by traits.
+				</div>
+				<div class="modalDiv">
+					Get information on their relationships, alliances, and culture.
+				</div>
+				<div class="modalDiv">
+					Know more things.
+				</div>
+			</div><button class="startBtn"><span class="spanStartBtn">Start Searching</span></button>
+		</div>
+	</div>
+	<div class="startPageBG">
+		<header role='banner'>
+			<h1 class="">Game of Thrones Character Tracker</h1>
+		</header>
+	</div>
+	<div class='formAndResult'>
+		<div class='characterAndTraits'>
+			<div class="searchParent">
+				<div class='characterSearchContainer'>
+					<form class='characterForm'>
+						<fieldset>
+							<label for='characterSearch'>Search by Character Name</label> <input id='characterSearch' placeholder='First and Last Name' role="search" type='text'>
+						</fieldset><button class='submitReset formSubmitNames' type='submit'>Submit</button> <button class='submitReset formResetNames' type='reset'>Reset</button>
+					</form>
+				</div>
+				<h4 class="orH4">OR</h4>
+				<div class='traitSearchContainer'>
+					<form class='traitForm'>
+						<fieldset>
+							<legend>Search by Character Traits</legend> <select class='cultureSelection'>
+								<option>
+									Select
+								</option>
+								<option>
+									Northmen
+								</option>
+								<option>
+									Valyrian
+								</option>
+								<option>
+									Braavosi
+								</option>
+								<option>
+									Westeros
+								</option>
+								<option>
+									Ironborn
+								</option>
+								<option>
+									Valemen
+								</option>
+								<option>
+									First Men
+								</option>
+								<option>
+									Rhoynar
+								</option>
+								<option>
+									Ghiscari
+								</option>
+								<option>
+									Crannogmen
+								</option>
+								<option>
+									Free Folk
+								</option>
+								<option>
+									Rivermen
+								</option>
+								<option>
+									Dothraki
+								</option>
+								<option>
+									Lhazareen
+								</option>
+								<option>
+									Qartheen
+								</option>
+								<option>
+									Asshai
+								</option>
+								<option>
+									Naathi
+								</option>
+							</select> <label for='characterStatusAlive'>Alive</label> <input id='characterStatusAlive' name='radio' type='radio'> <label for='characterStatusDead'>Dead</label> <input id='characterStatusDead' name='radio' type='radio'> <label for='characterStatusUnknown'>Either</label> <input id='characterStatusUnknown' name='radio' type='radio'>
+						</fieldset><button class='submitReset formSubmitTraits' type='submit'>Submit</button> <button class='submitReset formResetTraits' type='reset'>Reset</button>
+					</form>
+				</div>
+			</div>
+		</div><!--Template for results-->
+		<div class='results'></div>
+	</div>
+	<div class='listParent'>
+		<div class='namesList' role="list"></div>
+		<div class="hidden buttonsParent">
+			<button class='previous'>Previous</button>
+			<div class='pageNumber'>
+				Page: 1
+			</div><button class='next'>Next</button>
+		</div>
+	</div>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'>
+	</script> 
+	<script src='index.js'>
+	</script>
+</body>
 </html>
